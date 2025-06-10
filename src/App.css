@@ -1,0 +1,27 @@
+
+
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header nav {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    header nav a {
+        padding: 10px 0;
+    }
+}
+
+/* Responsive Cart */
+@media (max-width: 600px) {
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
