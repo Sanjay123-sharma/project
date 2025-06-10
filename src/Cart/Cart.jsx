@@ -15,7 +15,7 @@ export default function Cart() {
   }, 0);
 
   const tax = Math.round(total * 0.08); 
-
+  
   const handleRemove = (id) => {
     dispatch(removeOrder(id));
   };
