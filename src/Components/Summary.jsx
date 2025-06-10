@@ -29,11 +29,11 @@ export default function Summary({ total, tax, cartCount }) {
         <span>${Number(grandTotal).toFixed(2)}</span>
       </div>
 
-    <NavLink to={'/shipping'}>
-       <button className="w-full px-4 py-3 bg-black text-white text-lg rounded hover:bg-gray-800 transition">
-        Proceed to Checkout
-      </button>
-    </NavLink>
+      <NavLink to={"/shipping"}>
+        <button className="w-full px-4 py-3 bg-black text-white text-lg rounded hover:bg-gray-800 transition">
+          Proceed to Checkout
+        </button>
+      </NavLink>
     </div>
   );
 }

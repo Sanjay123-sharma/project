@@ -1,26 +1,26 @@
-import React, { useState } from 'react';
-import { Header } from '../Components/Header';
-import Footer from '../Components/Footer';
-import { useNavigate } from 'react-router';
-import { useDispatch } from 'react-redux';
-import { Orders, removeAllCart } from '../Store/Slice';
+import React, { useState } from "react";
+import { Header } from "../Components/Header";
+import Footer from "../Components/Footer";
+import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { Orders, removeAllCart } from "../Store/Slice";
 
 export default function Shipping() {
-  const [fname, setFName] = useState('');
-  const [Lname, setLName] = useState('');
-  const [street, setStreet] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [zipcode, setZipcode] = useState('');
+  const [fname, setFName] = useState("");
+  const [Lname, setLName] = useState("");
+  const [street, setStreet] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [zipcode, setZipcode] = useState("");
 
-  const [paymentMethod, setPaymentMethod] = useState('card');
-  const [cardNumber, setCardNumber] = useState('');
-  const [expiryDate, setExpiryDate] = useState('');
-  const [cvv, setCvv] = useState('');
-  const [nameOnCard, setNameOnCard] = useState('');
+  const [paymentMethod, setPaymentMethod] = useState("card");
+  const [cardNumber, setCardNumber] = useState("");
+  const [expiryDate, setExpiryDate] = useState("");
+  const [cvv, setCvv] = useState("");
+  const [nameOnCard, setNameOnCard] = useState("");
 
-  const Navigate=useNavigate()
-  const dispatch=useDispatch();
+  const Navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,16 +35,15 @@ export default function Shipping() {
       cardNumber,
       expiryDate,
       cvv,
-      nameOnCard
+      nameOnCard,
     });
-    dispatch(Orders())
-    dispatch(removeAllCart())
-    Navigate('/OrderConfirmation');
-    
+    dispatch(Orders());
+    dispatch(removeAllCart());
+    Navigate("/OrderConfirmation");
   };
 
   const handleZipChange = (e) => {
-    const value = e.target.value.replace(/\D/g, ''); // remove non-digits
+    const value = e.target.value.replace(/\D/g, ""); // remove non-digits
     if (value.length <= 6) {
       setZipcode(value);
     }
@@ -65,7 +64,9 @@ export default function Shipping() {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="flex gap-4">
                 <div className="flex-1">
-                  <label className="block text-gray-700 font-medium mb-1">First Name</label>
+                  <label className="block text-gray-700 font-medium mb-1">
+                    First Name
+                  </label>
                   <input
                     type="text"
                     value={fname}
@@ -75,7 +76,9 @@ export default function Shipping() {
                   />
                 </div>
                 <div className="flex-1">
-                  <label className="block text-gray-700 font-medium mb-1">Last Name</label>
+                  <label className="block text-gray-700 font-medium mb-1">
+                    Last Name
+                  </label>
                   <input
                     type="text"
                     value={Lname}
@@ -87,7 +90,9 @@ export default function Shipping() {
               </div>
 
               <div>
-                <label className="block text-gray-700 font-medium mb-1">Street Address</label>
+                <label className="block text-gray-700 font-medium mb-1">
+                  Street Address
+                </label>
                 <input
                   type="text"
                   value={street}
@@ -99,7 +104,9 @@ export default function Shipping() {
 
               <div className="flex gap-4">
                 <div className="flex-1">
-                  <label className="block text-gray-700 font-medium mb-1">State</label>
+                  <label className="block text-gray-700 font-medium mb-1">
+                    State
+                  </label>
                   <input
                     type="text"
                     value={state}
@@ -109,7 +116,9 @@ export default function Shipping() {
                   />
                 </div>
                 <div className="flex-1">
-                  <label className="block text-gray-700 font-medium mb-1">City</label>
+                  <label className="block text-gray-700 font-medium mb-1">
+                    City
+                  </label>
                   <input
                     type="text"
                     value={city}
@@ -121,7 +130,9 @@ export default function Shipping() {
               </div>
 
               <div>
-                <label className="block text-gray-700 font-medium mb-1">ZIP Code</label>
+                <label className="block text-gray-700 font-medium mb-1">
+                  ZIP Code
+                </label>
                 <input
                   type="text"
                   value={zipcode}
@@ -131,7 +142,7 @@ export default function Shipping() {
                   className="w-full border rounded px-3 py-2"
                   placeholder="Enter 6-digit ZIP Code"
                   onPaste={(e) => {
-                    const paste = e.clipboardData.getData('Text');
+                    const paste = e.clipboardData.getData("Text");
                     if (!/^\d+$/.test(paste)) {
                       e.preventDefault();
                     }
@@ -151,7 +162,7 @@ export default function Shipping() {
                       type="radio"
                       name="paymentMethod"
                       value="card"
-                      checked={paymentMethod === 'card'}
+                      checked={paymentMethod === "card"}
                       onChange={(e) => setPaymentMethod(e.target.value)}
                     />
                     Credit/Debit Card
@@ -161,7 +172,7 @@ export default function Shipping() {
                       type="radio"
                       name="paymentMethod"
                       value="paypal"
-                      checked={paymentMethod === 'paypal'}
+                      checked={paymentMethod === "paypal"}
                       onChange={(e) => setPaymentMethod(e.target.value)}
                     />
                     PayPal
@@ -171,17 +182,19 @@ export default function Shipping() {
                       type="radio"
                       name="paymentMethod"
                       value="cash on delivery"
-                      checked={paymentMethod === 'cash on delivery'}
+                      checked={paymentMethod === "cash on delivery"}
                       onChange={(e) => setPaymentMethod(e.target.value)}
                     />
                     Cash on Delivery
                   </label>
                 </div>
 
-                {paymentMethod === 'card' && (
+                {paymentMethod === "card" && (
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-gray-700 font-medium mb-1">Card Number</label>
+                      <label className="block text-gray-700 font-medium mb-1">
+                        Card Number
+                      </label>
                       <input
                         type="Number"
                         value={cardNumber}
@@ -194,7 +207,9 @@ export default function Shipping() {
 
                     <div className="flex gap-4">
                       <div className="flex-1">
-                        <label className="block text-gray-700 font-medium mb-1">Expiry Date</label>
+                        <label className="block text-gray-700 font-medium mb-1">
+                          Expiry Date
+                        </label>
                         <input
                           type="text"
                           value={expiryDate}
@@ -205,7 +220,9 @@ export default function Shipping() {
                         />
                       </div>
                       <div className="flex-1">
-                        <label className="block text-gray-700 font-medium mb-1">CVV</label>
+                        <label className="block text-gray-700 font-medium mb-1">
+                          CVV
+                        </label>
                         <input
                           type="text"
                           value={cvv}
@@ -219,14 +236,15 @@ export default function Shipping() {
                     </div>
 
                     <div>
-                      <label className="block text-gray-700 font-medium mb-1">Name on Card</label>
+                      <label className="block text-gray-700 font-medium mb-1">
+                        Name on Card
+                      </label>
                       <input
                         type="text"
                         value={nameOnCard}
                         onChange={(e) => setNameOnCard(e.target.value)}
                         required
                         className="w-full border rounded px-3 py-2"
-                       
                       />
                     </div>
                   </div>

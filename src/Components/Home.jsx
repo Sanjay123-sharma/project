@@ -13,9 +13,8 @@ export default function Home() {
     },[dispatch])
   return (
     <div>
-
         <ProductList  loading={loading} error={error} Product={Product} /> 
-      
+        
     </div>
   )
 }

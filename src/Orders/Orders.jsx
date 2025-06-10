@@ -1,34 +1,33 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Header } from '../Components/Header';
-import Footer from '../Components/Footer';
-import { cancelOrder } from '../Store/Slice';
-import Swal from 'sweetalert2';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Header } from "../Components/Header";
+import Footer from "../Components/Footer";
+import { cancelOrder } from "../Store/Slice";
+import Swal from "sweetalert2";
 
 export default function Orders() {
   const Order = useSelector((state) => state.product.Order);
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   const handleCancel = (OrderId) => {
-  Swal.fire({
-    title: "Are you Want to Cancel the Order?",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes",
-    cancelButtonText: "No",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: "Cancelled!",
-        text: "Order Cancelled Successfully.",
-        icon: "success",
-      });
-      dispatch(cancelOrder(OrderId));
-    }
-  });
-};
-
+    Swal.fire({
+      title: "Are you Want to Cancel the Order?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes",
+      cancelButtonText: "No",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Cancelled!",
+          text: "Order Cancelled Successfully.",
+          icon: "success",
+        });
+        dispatch(cancelOrder(OrderId));
+      }
+    });
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
@@ -51,7 +50,6 @@ export default function Orders() {
                 key={item.OrderId}
                 className="flex items-center justify-between bg-white p-4 rounded-lg shadow border border-gray-200"
               >
-               
                 <div className="flex items-center space-x-4">
                   <div className="w-16 h-16 bg-gray-100 rounded flex items-center justify-center overflow-hidden">
                     <img
@@ -61,19 +59,25 @@ export default function Orders() {
                     />
                   </div>
                   <div>
-                    <div className="font-medium text-gray-900">{item.title}</div>
-                    <div className="text-sm text-gray-600">Quantity: {item.count}</div>
-                    <div className="text-sm text-gray-500 mt-1">Order ID: {item.OrderId}</div>
+                    <div className="font-medium text-gray-900">
+                      {item.title}
+                    </div>
+                    <div className="text-sm text-gray-600">
+                      Quantity: {item.count}
+                    </div>
+                    <div className="text-sm text-gray-500 mt-1">
+                      Order ID: {item.OrderId}
+                    </div>
                   </div>
                 </div>
 
-               
                 <div className="text-right">
                   <div className="text-lg font-semibold text-gray-900 mb-2">
                     ${(item.price * item.count).toFixed(2)}
                   </div>
-                  <button className="text-sm text-red-600 border border-red-500 px-3 py-1 rounded hover:bg-red-50 transition"
-                  onClick={()=>handleCancel(item.OrderId)}
+                  <button
+                    className="text-sm text-red-600 border border-red-500 px-3 py-1 rounded hover:bg-red-50 transition"
+                    onClick={() => handleCancel(item.OrderId)}
                   >
                     Cancel Order
                   </button>

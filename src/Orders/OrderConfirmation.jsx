@@ -1,6 +1,6 @@
-import React from 'react';
-import { Header } from '../Components/Header';
-import Footer from '../Components/Footer';
+import React from "react";
+import { Header } from "../Components/Header";
+import Footer from "../Components/Footer";
 
 export default function OrderConfirmation() {
   return (
@@ -17,12 +17,18 @@ export default function OrderConfirmation() {
               strokeWidth="2"
               viewBox="0 0 24 24"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M5 13l4 4L19 7"
+              />
             </svg>
           </div>
         </div>
 
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">Thank you for your order!</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-4">
+          Thank you for your order!
+        </h1>
         <p className="text-gray-600 mb-6">
           Your order has been confirmed and will be shipped soon.
         </p>

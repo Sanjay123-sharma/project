@@ -14,8 +14,8 @@ export default function Cart() {
     return x + item.price * item.count;
   }, 0);
 
-  const tax = Math.round(total * 0.08); 
-  
+  const tax = Math.round(total * 0.08);
+
   const handleRemove = (id) => {
     dispatch(removeOrder(id));
   };
@@ -39,7 +39,6 @@ export default function Cart() {
           <h1 className="text-2xl text-center mt-10">🛒 Cart is empty</h1>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
             <div className="md:col-span-2 space-y-6">
               <div className="bg-white p-4 rounded-lg shadow">
                 <div className="flex justify-between font-semibold text-gray-700 border-b pb-2 mb-4">
@@ -98,19 +97,17 @@ export default function Cart() {
                 ))}
               </div>
 
-            
               <NavLink
                 to="/"
                 className="inline-block mt-4 px-4 py-2 border border-gray-400 rounded hover:bg-gray-200 transition"
               >
                 ← Continue Shopping
               </NavLink>
-            </div >
+            </div>
 
-           
-           <div className="w-full md:w-1/3 ml-6">
-             <Summary total={total} tax={tax} cartCount={Cart.length} />
-           </div>
+            <div className="w-full md:w-1/3 ml-6">
+              <Summary total={total} tax={tax} cartCount={Cart.length} />
+            </div>
           </div>
         )}
       </main>
@@ -119,7 +116,3 @@ export default function Cart() {
     </div>
   );
 }
-
-
-
-
