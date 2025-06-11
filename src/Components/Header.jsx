@@ -16,7 +16,7 @@ export function Header() {
         </NavLink>
 
         {/* Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-8">
           <NavLink
             to="/"
             className="text-white hover:text-purple-400 font-medium transition-all"
@@ -35,7 +35,10 @@ export function Header() {
           >
             About Us
           </NavLink>
-        </nav>
+
+        </div>
+          
+        
 
         {/* Cart Icon */}
         <NavLink

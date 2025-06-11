@@ -14,6 +14,7 @@ export const Slice = createSlice({
     Order: [],
   },
   extraReducers: (boiler) => {
+
     boiler
       .addCase(ApiData.pending, (state) => {
         state.loading = true;
@@ -46,13 +47,13 @@ export const Slice = createSlice({
     increment: (state, action) => {
       let list = state.Cart;
       let res = list.find((item) => item.id === action.payload);
-      if (res) {
+      if(res) {
         res.count = res.count + 1;
       }
     },
     decrement: (state, action) => {
       let list = state.Cart;
-      let res = list.find((item) => item.id === action.payload);
+      let res= list.find((item) => item.id === action.payload);
       if (res) {
         if (res.count <= 1) {
           console.log("value cannot be -ve or 0");
@@ -61,8 +62,7 @@ export const Slice = createSlice({
         }
       }
     },
-
-    Orders: (state) => {
+    Orders:(state) => {
       const newOrders = state.Cart.map((item) => ({
         ...item,
         OrderId: Date.now() + Math.floor(Math.random() * 1000),

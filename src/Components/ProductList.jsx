@@ -9,7 +9,8 @@ import Swal from "sweetalert2";
 export default function ProductList({ loading, Product, error }) {
   const Cart = useSelector((state) => state.product.Cart);
   const dispatch = useDispatch();
-  // Infinite scroll state: number of products to show
+
+  //  number of products to show
   const [visibleCount, setVisibleCount] = useState(12);
 
   // Filter state
@@ -53,6 +54,7 @@ export default function ProductList({ loading, Product, error }) {
   useEffect(() => {
     setVisibleCount(12);
   }, [selectedCategory]);
+  
 
   const handleAdd = (id) => {
     let list = Cart;
@@ -60,7 +62,6 @@ export default function ProductList({ loading, Product, error }) {
     if (res) {
       Swal.fire({
         position: "top-end",
-
         title: "Item Already Added to Cart",
         showConfirmButton: false,
         timer: 1500,
@@ -98,6 +99,7 @@ export default function ProductList({ loading, Product, error }) {
           ))}
         </select>
       </div>
+
 
       <main className="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {error ? (

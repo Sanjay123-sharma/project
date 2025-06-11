@@ -17,7 +17,7 @@ export default function Orders() {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes",
       cancelButtonText: "No",
-    }).then((result) => {
+    }).then((result) =>{
       if (result.isConfirmed) {
         Swal.fire({
           title: "Cancelled!",
@@ -28,7 +28,7 @@ export default function Orders() {
       }
     });
   };
-
+  
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       <Header />

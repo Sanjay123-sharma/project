@@ -14,7 +14,6 @@ export default function Home() {
   return (
     <div>
         <ProductList  loading={loading} error={error} Product={Product} /> 
-        
     </div>
   )
 }

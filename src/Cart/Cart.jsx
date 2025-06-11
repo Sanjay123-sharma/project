@@ -15,19 +15,15 @@ export default function Cart() {
   }, 0);
 
   const tax = Math.round(total * 0.08);
-
   const handleRemove = (id) => {
     dispatch(removeOrder(id));
   };
-
   const handleDecrement = (id) => {
     dispatch(decrement(id));
   };
-
   const handleIncrement = (id) => {
     dispatch(increment(id));
   };
-
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col">
       <Header />
@@ -67,6 +63,7 @@ export default function Cart() {
                           className="text-red-600 text-sm mt-1 flex items-center"
                         >
                           <span className="mr-1">🗑️</span> Remove
+
                         </button>
                       </div>
                     </div>
@@ -103,6 +100,7 @@ export default function Cart() {
               >
                 ← Continue Shopping
               </NavLink>
+              
             </div>
 
             <div className="w-full md:w-1/3 ml-6">

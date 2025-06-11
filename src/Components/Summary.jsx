@@ -2,7 +2,6 @@ import { NavLink } from "react-router";
 
 export default function Summary({ total, tax, cartCount }) {
   const grandTotal = total + tax;
-
   return (
     <div className="bg-white p-4 rounded-lg shadow sticky top-24 w-full md:w-80">
       <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
