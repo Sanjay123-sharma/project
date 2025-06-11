@@ -37,9 +37,7 @@ export function Header() {
           </NavLink>
 
         </div>
-          
         
-
         {/* Cart Icon */}
         <NavLink
           to="/cart"
