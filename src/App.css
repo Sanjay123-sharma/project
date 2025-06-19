@@ -6,3 +6,8 @@
         align-items: flex-start;
     }
 }
+
+input::placeholder{
+    
+color: lightgray;
+}
