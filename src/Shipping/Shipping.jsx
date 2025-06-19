@@ -12,7 +12,7 @@ export default function Shipping() {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [zipcode, setZipcode] = useState("");
-  
+
   const [paymentMethod, setPaymentMethod] = useState("card");
   const [cardNumber, setCardNumber] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
@@ -202,6 +202,7 @@ export default function Shipping() {
                         required
                         className="w-full border rounded px-3 py-2"
                         placeholder="1234 5678 9012 3456"
+                        id="inp"
                       />
                     </div>
 
@@ -217,6 +218,7 @@ export default function Shipping() {
                           required
                           className="w-full border rounded px-3 py-2"
                           placeholder="MM/YY"
+                          id="inp"
                         />
                       </div>
                       <div className="flex-1">
@@ -231,6 +233,7 @@ export default function Shipping() {
                           className="w-full border rounded px-3 py-2 "
                           placeholder='123'
                           maxLength={3}
+                          id="inp"
                           
                         />
                       </div>

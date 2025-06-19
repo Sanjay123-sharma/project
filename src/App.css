@@ -7,7 +7,7 @@
     }
 }
 
-input::placeholder{
+#inp{
+    color: lightgray;
     
-color: lightgray;
 }
