@@ -10,35 +10,36 @@ export default function ProductList({ loading, Product, error }) {
   const Cart = useSelector((state) => state.product.Cart);
   const dispatch = useDispatch();
 
-  //  number of products to show
   const [visibleCount, setVisibleCount] = useState(12);
-
-  // Filter state
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [searchTerm, setSearchTerm] = useState("");
 
-  // Unique categories from products (memoized)
   const categories = useMemo(() => {
     const cats = Product.map((p) => p.category);
     return ["All", ...new Set(cats)];
   }, [Product]);
 
-  // Filtered products by category
-  const filteredProducts =
-    selectedCategory === "All"
-      ? Product
-      : Product.filter((p) => p.category === selectedCategory);
+  const filteredProducts = useMemo(() => {
+    const byCategory =
+      selectedCategory === "All"
+        ? Product
+        : Product.filter((p) => p.category === selectedCategory);
 
-  // Products to show according to infinite scroll
+    const bySearch = byCategory.filter((p) =>
+      p.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    return bySearch;
+  }, [Product, selectedCategory, searchTerm]);
+
   const visibleProducts = filteredProducts.slice(0, visibleCount);
 
-  // Infinite scroll handler
   useEffect(() => {
     function handleScroll() {
       if (
         window.innerHeight + window.scrollY >=
         document.documentElement.scrollHeight - 100
       ) {
-        // Near bottom - load more
         setVisibleCount((prev) =>
           prev + 6 > filteredProducts.length
             ? filteredProducts.length
@@ -53,8 +54,7 @@ export default function ProductList({ loading, Product, error }) {
 
   useEffect(() => {
     setVisibleCount(12);
-  }, [selectedCategory]);
-  
+  }, [selectedCategory, searchTerm]);
 
   const handleAdd = (id) => {
     let list = Cart;
@@ -82,7 +82,8 @@ export default function ProductList({ loading, Product, error }) {
     <div>
       <Header />
 
-      <div className="max-w-7xl mx-auto px-4 py-4 flex items-center gap-4">
+      {/* Category and Search Filters */}
+      <div className="max-w-7xl mx-auto px-4 py-4 flex flex-wrap items-center gap-4">
         <label htmlFor="category" className="font-semibold">
           Filter by Category:
         </label>
@@ -98,9 +99,17 @@ export default function ProductList({ loading, Product, error }) {
             </option>
           ))}
         </select>
+
+        <input
+          type="text"
+          placeholder="Search products..."
+          className="border border-gray-300 rounded-md px-8 py-1 mx-50 focus:outline-none focus:ring-2 focus:ring-purple-600"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
       </div>
 
-
+      {/* Products Grid */}
       <main className="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {error ? (
           <h1 className="col-span-full text-center text-red-600">
@@ -143,8 +152,8 @@ export default function ProductList({ loading, Product, error }) {
           ))
         )}
       </main>
-      <br />
 
+      <br />
       <Footer />
     </div>
   );

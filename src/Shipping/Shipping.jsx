@@ -140,7 +140,7 @@ export default function Shipping() {
                   maxLength={6}
                   required
                   className="w-full border rounded px-3 py-2"
-                  placeholder="Enter 6-digit ZIP Code"
+                 
                   onPaste={(e) => {
                     const paste = e.clipboardData.getData("Text");
                     if (!/^\d+$/.test(paste)) {
@@ -228,9 +228,10 @@ export default function Shipping() {
                           value={cvv}
                           onChange={(e) => setCvv(e.target.value)}
                           required
-                          className="w-full border rounded px-3 py-2"
-                          placeholder="123"
+                          className="w-full border rounded px-3 py-2 "
+                          placeholder='123'
                           maxLength={3}
+                          
                         />
                       </div>
                     </div>

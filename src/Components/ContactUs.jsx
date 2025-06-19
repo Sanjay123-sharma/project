@@ -59,7 +59,6 @@ export default function ContactUs() {
               onChange={(e) => setName(e.target.value)}
               required
               className="w-full border rounded px-3 py-2"
-              placeholder="Enter your name"
             />
           </div>
 
@@ -73,7 +72,6 @@ export default function ContactUs() {
               onChange={(e) => setEmail(e.target.value)}
               required
               className="w-full border rounded px-3 py-2"
-              placeholder="Enter your email"
             />
             <span className="text-sm text-red-600 mt-1 block">{error}</span>
           </div>
